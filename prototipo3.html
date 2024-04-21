@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8">
+    <title>Facturación</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+        h2{
+            text-align: center;
+        }
+        h3{
+            margin-left: 13.5%;
+            font-size: 23px;
+        }
+
+        form {
+            background-color: #fff;            
+            padding: 20px;
+            max-width: 70%;
+            margin: 0 auto;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .containerlista{
+            background-color: #fff;            
+            padding: 20px;
+            max-width: 70%;
+            margin: 0 auto;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;           
+        }
+        
+        .checkbox{
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            margin-left: 1px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"] {
+            width: 98%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .button-container1 {
+        margin-top: 10px;
+        margin-left: 80%;
+        }
+
+        .button-container1 input[type="button"] {
+            background-color: #727773;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .lista{
+            margin: 0 auto;
+            margin-bottom: 30px;          
+        }
+       
+        select{
+            height: 30px;
+            width: 40%;
+        }
+ 
+        input[type="email"]{
+            width: 40%;
+            height: 25px;
+        }
+
+        input[type="Checkbox"]{
+            width: 12%;
+            height: 20px;
+            margin-left: 17px;
+            padding-left: 12px;
+        }
+
+
+        .button-container1 input[type="button"]:hover {
+            background-color: #45a049;
+        }
+        .button-container2 {
+        margin-top: 10px;
+        margin-left: 73.8%;
+        }
+
+        .button-container2 input[type="button"] {
+            background-color: #727773;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .button-container2 input[type="button"]:hover {
+            background-color: #45a049;
+        }
+
+        .containeraceptar{
+        margin-top: 10px;
+        margin-left: 30%;
+        }
+
+        .containeraceptar input[type="button"] {
+            background-color: #727773;
+            width: 30%;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .containeraceptar input[type="button"]:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 73%;
+            margin: 0 auto;
+            border-collapse: collapse;
+    
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #b2b4b6;
+            color: rgb(7, 7, 7);
+        }
+
+        input[type="button"]#generar-factura {
+            background-color: #007bff;
+        }
+
+        input[type="button"]#generar-factura:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>FACTURACION</h1>
+    <div class="form-container"></div>
+    <form id="sales-form">
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required><br><br>
+    <h2>DATOS DEL CLIENTE</h2>    
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="identificacion">Cedula o NIT:</label>
+        <input type="number" id="identificacion" name="identificacion" required><br><br>
+
+        <label for="TipoPersona">Tipo de persona</label>
+        <div class="lista">
+        <select name="Seleccion una opción" id="tipopersona">
+         <option value="Natural">Natural</option>
+         <option value="Juridica">Juridica</option> 
+        </select>
+        </div>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="number" id="telefono" name="telefono" required><br><br>
+
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" required><br><br>
+
+    <div id="productos">
+        <div class="producto">
+            <label for="id_producto">Id Producto:</label>
+            <input type="number" class="id_producto" name="id_producto" required><br><br>
+
+            <label for="cantidad">Cantidad de unidades:</label>
+            <input type="number" class="cantidad" name="cantidad" required><br><br>
+
+            <label for="valor_uni">Valor Unidad:</label>
+            <input type="number" class="valor_uni" name="valor_uni" required><br><br>
+        </div>
+    </div>
+
+    <div class="button-container1">   
+        <input type="button" value="Agregar Producto" onclick="agregarProducto()"> 
+    </div>
+    </form>
+
+    <h3>LISTA DE COMPRA</h3>
+    <table id="tabla-productos" border="1">
+        <tr>
+            <th>Fecha</th>
+            <th>Nombre</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Valor uni</th>
+            <th>Precio Total</th>
+        </tr>
+    </table>
+
+    <div class="button-container2">
+        <input type="button" value="Confirmar Compra" onclick="generarFactura()">
+    </div>    
+
+    <div class="containerlista">
+        <label for="MetodoPago">Método de pago</label>
+        <div class="lista">
+            <select name="MetodosDePago" id="MetodoPago">
+                <option value="Efectivo">Efectivo</option>
+                <option value="Tarjeta Debito">Tarjeta Debito</option>
+                <option value="Tarjeta Credito">Tarjeta Credito</option> 
+            </select>
+        </div>
+
+        <h4>Envio de factura</h4>
+        <div class="checkbox">
+            <label for="opcion1">Correo Electrónico</label>
+            <input type="checkbox" id="opcion1" name="correo" value="opcion1">
+            <label for="opcion2">Imprimir</label>
+            <input type="checkbox" id="opcion2" name="imprimir" value="opcion2">
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="containeraceptar">
+            <input type="button" value="Aceptar" onclick="aceptarfactura()">
+            <input type="button" value="Volver" onclick="window.location.href = 'interfaz.php';">
+        </div>
+    </div>
+
+    <script>
+        function ConfirmarDatos() {
+            alert("Los Datos del cliente son correctos");    
+        }   
+    
+        function generarFactura() {
+            var fecha = document.getElementById("fecha").value;
+            var nombre = document.getElementById("nombre").value;
+            var productos = document.querySelectorAll('.producto');
+            
+            productos.forEach(function(producto) {
+                var id_producto = producto.querySelector('.id_producto').value;
+                var cantidad = parseInt(producto.querySelector('.cantidad').value);
+                var valor_uni = parseFloat(producto.querySelector('.valor_uni').value);
+                var precio_total = cantidad * valor_uni;
+    
+                var table = document.getElementById("tabla-productos");
+                var row = table.insertRow(-1);
+    
+                var cell_fecha = row.insertCell(0);
+                var cell_nombre = row.insertCell(1);
+                var cell_id_producto = row.insertCell(2);
+                var cell_cantidad = row.insertCell(3);
+                var cell_valor_uni = row.insertCell(4);
+                var cell_precio_total = row.insertCell(5);
+                var cell_accion = row.insertCell(6);
+    
+                cell_fecha.innerHTML = fecha;
+                cell_nombre.innerHTML = nombre;
+                cell_id_producto.innerHTML = id_producto;
+                cell_cantidad.innerHTML = cantidad;
+                cell_valor_uni.innerHTML = valor_uni.toFixed(2);
+                cell_precio_total.innerHTML = precio_total.toFixed(2);
+                cell_accion.innerHTML = `<input type="button" value="Eliminar" onclick="eliminarFila(this)">`;
+            });
+        }
+    
+        function agregarProducto() {
+            var productosDiv = document.getElementById("productos");
+            var nuevoProductoDiv = document.createElement("div");
+            nuevoProductoDiv.classList.add("producto");
+    
+            nuevoProductoDiv.innerHTML = `
+                <label for="id_producto">Id Producto:</label>
+                <input type="number" class="id_producto" name="id_producto" required><br><br>
+    
+                <label for="cantidad">Cantidad de unidades:</label>
+                <input type="number" class="cantidad" name="cantidad" required><br><br>
+    
+                <label for="valor_uni">Valor Unidad:</label>
+                <input type="number" class="valor_uni" name="valor_uni" required><br><br>
+    
+                <input type="button" value="Eliminar" onclick="eliminarProducto(this)">
+            `;
+    
+            productosDiv.appendChild(nuevoProductoDiv);
+        }
+    
+        function eliminarProducto(button) {
+            var productoDiv = button.parentNode;
+            productoDiv.parentNode.removeChild(productoDiv);
+        }
+    
+        function eliminarFila(button) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    
+        function aceptarfactura(){
+            alert("La factura fue generada correctamente");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+Usuario: admin@autolight.com
+Password: 123456
+
+Usuario: asistente@autolight.com
+Password: 654321

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8">
+    <title>Registro clientes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2{
+            text-align: center;
+        }
+
+        form {
+            background-color: #fff;            
+            padding: 20px;
+            max-width: 80%;
+            margin: 0 auto;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .form-container{
+            max-width: 70%;
+            background-color: #fff;
+            padding: 20px;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+        .lista{
+            margin: 0 auto;
+            margin-bottom: 30px;          
+        }
+        select{
+            height: 30px;
+            width: 40%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="email"]{
+            width: 40%;
+            height: 25px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"] {
+            width: 98%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .button-container1 {
+        margin-top: 10px;
+        margin-left: 30%;
+        }
+
+        .button-container1 input[type="button"] {
+            background-color: #727773;
+            margin-left: 16px;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .button-container1 input[type="button"]:hover {
+            background-color: #45a049;
+        }
+
+
+        input[type="button"]#generar-factura {
+            background-color: #007bff;
+        }
+
+        input[type="button"]#generar-factura:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    </head>
+<body>
+    <h1>REGISTRO CLIENTES</h1>
+    <div class="form-container">
+    <form= id="registro"method="post" accept-charset="UTF-8">       
+        <label for="nombres">Nombres:</label>
+        <input type="text" id="nombres" name="nombres" required><br><br>
+
+        <label for="Apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" required><br><br>
+
+        <label for="cedulaNit">Cedula o Nit</label>
+        <div class="lista">
+        <select name="Seleccion una opción" id="tipodocument">
+         <option value="Cedula de ciudadania">Cedula de ciudadania</option>
+         <option value="NIT">NIT</option> 
+        </select>
+        </div>
+
+        <label for="numero">Ingrese el número:</label>
+        <input type="number" id="numero" name="numero" placeholder="Ingrese el número del documento sin signos de puntuación" required>
+
+        <label for="TipoPersona">Tipo de persona</label>
+        <div class="lista">
+        <select name="Seleccion una opción" id="tipopersona">
+         <option value="Natural">Natural</option>
+         <option value="Juridica">Juridica</option> 
+        </select>
+        </div>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="number" id="telefono" name="telefono" placeholder="Ingrese el número de teléfono" required><br><br>
+
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion!" placeholder="Ingrese la dirección de la empresa" required><br><br>
+
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" required><br><br>
+
+        <label for="fechaRegistro">Fecha de registro:</label>
+        <input type="date" id="fechareg" name="fechareg" required><br><br>
+        <br>
+        <div class="button-container1">
+        <input type="button" value="Registrar cliente" onclick="GuardarUsuario()">
+        <input type="button" value="Eliminar cliente" onclick="EliminarCliente()">
+        <input type="button" value="Modificar cliente" onclick="ModificarCliente()">
+        <input type="button" value="Volver" onclick="window.location.href = 'interfaz.php';">
+
+
+        </div>
+    </form>
+    </div>
+</body>
+<script>
+    function GuardarUsuario() {
+        // Puedes implementar la lógica para generar una factura aquí.
+        // Esto podría implicar calcular el precio total, impuestos, etc.
+        alert("El cliente ha sido guardado en la base de datos satisfactoriamente");
+    }
+    function EliminarCliente() {
+        // Implementa la lógica para eliminar el cliente de la base de datos.
+        // Puedes mostrar un mensaje de confirmación y realizar la eliminación aquí.
+        alert("Cliente ha sido eliminado de la base de datos satisfactoriamente");
+    }
+    function ModificarCliente() {
+        // Implementa la lógica para eliminar el cliente de la base de datos.
+        // Puedes mostrar un mensaje de confirmación y realizar la eliminación aquí.
+        alert("El cliente ha sido modificado satisfactoriamente");
+    }
+
+</script>
+</html>
